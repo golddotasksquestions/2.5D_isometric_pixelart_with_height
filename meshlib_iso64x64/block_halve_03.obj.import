@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/block_halve_03.obj-b57ee700bd8ef1be45c7063b6193e5bd.mesh"
+
+[deps]
+
+files=[ "res://.import/block_halve_03.obj-b57ee700bd8ef1be45c7063b6193e5bd.mesh" ]
+
+source_file="res://meshlib_iso64x64/block_halve_03.obj"
+dest_files=[ "res://.import/block_halve_03.obj-b57ee700bd8ef1be45c7063b6193e5bd.mesh", "res://.import/block_halve_03.obj-b57ee700bd8ef1be45c7063b6193e5bd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

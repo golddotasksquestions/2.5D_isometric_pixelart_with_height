@@ -1,0 +1,16 @@
+# Blender v2.90.1 OBJ File: 'iso_64x64_multitile_export-ready.blend'
+# www.blender.org
+mtllib block_flat_01.mtl
+o Cube.010
+v 0.500000 0.000000 -0.500000
+v 0.500000 0.000000 0.500000
+v -0.500000 0.000000 -0.500000
+v -0.500000 0.000000 0.500000
+vt 0.100028 0.000139
+vt 0.200028 0.083473
+vt 0.100028 0.166806
+vt 0.000028 0.083473
+vn 0.0000 1.0000 0.0000
+usemtl Material
+s off
+f 1/1/1 3/2/1 4/3/1 2/4/1
