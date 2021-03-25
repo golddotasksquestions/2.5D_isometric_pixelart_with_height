@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://meshlib_iso64x64/iso_64x64_multitile_pixel_texture.png" type="Texture" id=1]
+
+[resource]
+albedo_texture = ExtResource( 1 )

@@ -1,0 +1,339 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Camera_Orientation.gd" type="Script" id=1]
+[ext_resource path="res://box.png" type="Texture" id=2]
+[ext_resource path="res://player.png" type="Texture" id=3]
+[ext_resource path="res://meshlib_iso64x64.meshlib" type="MeshLibrary" id=4]
+[ext_resource path="res://player.gd" type="Script" id=5]
+[ext_resource path="res://box.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://switch.png" type="Texture" id=7]
+[ext_resource path="res://switch.gd" type="Script" id=8]
+
+[sub_resource type="Environment" id=1]
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.235514
+height = 0.01
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 64, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 32, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 64, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 16
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "idle_back",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "hurt_back",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "jump_back",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ) ],
+"loop": true,
+"name": "walk_back",
+"speed": 7.0
+} ]
+
+[sub_resource type="Curve" id=16]
+_data = [ Vector2( 0, 0.785227 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0272727 ), -0.205549, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 16 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+emission_shape = 2
+emission_box_extents = Vector3( 0.1, 0, 0.1 )
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0.1, 0 )
+initial_velocity = 0.36
+damping = 1.28
+scale_curve = SubResource( 17 )
+
+[sub_resource type="SphereMesh" id=19]
+radius = 0.108
+height = 0.144
+radial_segments = 16
+rings = 8
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 0.26, 0.26, 0.26 )
+
+[sub_resource type="StreamTexture" id=21]
+flags = 16
+load_path = "res://.import/box.png-196cb2b6d7422a4ab3b9c60b5a994fe3.stex"
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 16
+atlas = SubResource( 21 )
+region = Rect2( 0, 0, 32, 35 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpatialMaterial" id=24]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="ConvexPolygonShape" id=25]
+margin = 0.001
+points = PoolVector3Array( -0.25, 0.25, 0.125, -0.25, 0.125, 0.125, -0.25, 0.25, 0, -0.25, 0.125, 0, -0.25, 0.375, 0.125, -0.25, 0.375, 0, -0.25, 0.25, -0.125, -0.25, 0.125, -0.125, -0.25, 0.375, -0.125, -0.25, 0.125, 0.25, -0.25, 0, 0.25, -0.25, 0, 0.125, -0.25, 0.25, 0.25, -0.25, 0.375, 0.25, -0.25, 0.5, 0.25, -0.25, 0.5, 0.125, -0.25, 0.5, 0, -0.25, 0.5, -0.125, -0.25, 0.5, -0.25, -0.25, 0.375, -0.25, -0.25, 0.25, -0.25, -0.25, 0.125, -0.25, -0.25, 0, -0.125, -0.25, 0, -0.25, -0.25, 0, 0, -0.125, 0.25, -0.25, -0.125, 0.125, -0.25, 0, 0.25, -0.25, 0, 0.125, -0.25, -0.125, 0.375, -0.25, 0, 0.375, -0.25, 0.125, 0.25, -0.25, 0.125, 0.125, -0.25, 0.125, 0.375, -0.25, -0.25, 0.125, -0.25, -0.25, 0, -0.25, -0.125, 0, -0.25, -0.25, 0.25, -0.25, -0.25, 0.375, -0.25, -0.25, 0.5, -0.25, -0.125, 0.5, -0.25, 0, 0.5, -0.25, 0.125, 0.5, -0.25, 0.25, 0.5, -0.25, 0.25, 0.375, -0.25, 0.25, 0.25, -0.25, 0.25, 0.125, -0.25, 0.125, 0, -0.25, 0.25, 0, -0.25, 0, 0, -0.25, 0.25, 0.25, -0.125, 0.25, 0.125, -0.125, 0.25, 0.25, 0, 0.25, 0.125, 0, 0.25, 0.375, -0.125, 0.25, 0.375, 0, 0.25, 0.25, 0.125, 0.25, 0.125, 0.125, 0.25, 0.375, 0.125, 0.25, 0.125, -0.25, 0.25, 0, -0.25, 0.25, 0, -0.125, 0.25, 0.25, -0.25, 0.25, 0.375, -0.25, 0.25, 0.5, -0.25, 0.25, 0.5, -0.125, 0.25, 0.5, 0, 0.25, 0.5, 0.125, 0.25, 0.5, 0.25, 0.25, 0.375, 0.25, 0.25, 0.25, 0.25, 0.25, 0.125, 0.25, 0.25, 0, 0.125, 0.25, 0, 0.25, 0.25, 0, 0, 0.125, 0.25, 0.25, 0.125, 0.125, 0.25, 0, 0.25, 0.25, 0, 0.125, 0.25, 0.125, 0.375, 0.25, 0, 0.375, 0.25, -0.125, 0.25, 0.25, -0.125, 0.125, 0.25, -0.125, 0.375, 0.25, 0.25, 0.125, 0.25, 0.25, 0, 0.25, 0.125, 0, 0.25, 0.25, 0.25, 0.25, 0.25, 0.375, 0.25, 0.25, 0.5, 0.25, 0.125, 0.5, 0.25, 0, 0.5, 0.25, -0.125, 0.5, 0.25, -0.25, 0.5, 0.25, -0.25, 0.375, 0.25, -0.25, 0.25, 0.25, -0.25, 0.125, 0.25, -0.125, 0, 0.25, -0.25, 0, 0.25, 0, 0, 0.25, 0, 0, -0.125, -0.125, 0, -0.125, 0, 0, 0, -0.125, 0, 0, 0.125, 0, -0.125, 0.125, 0, 0, 0, 0, 0.125, -0.125, 0, 0.125, 0.125, 0, 0.125, -0.125, 0, -0.25, -0.25, 0, -0.25, -0.25, 0, -0.125, 0, 0, -0.25, 0.125, 0, -0.25, 0.25, 0, -0.25, 0.25, 0, -0.125, 0.25, 0, 0, 0.25, 0, 0.125, 0.25, 0, 0.25, 0.125, 0, 0.25, 0, 0, 0.25, -0.125, 0, 0.25, -0.25, 0, 0.125, -0.25, 0, 0.25, -0.25, 0, 0, 0, 0.5, -0.125, 0.125, 0.5, -0.125, 0, 0.5, 0, 0.125, 0.5, 0, -0.125, 0.5, -0.125, -0.125, 0.5, 0, 0, 0.5, 0.125, 0.125, 0.5, 0.125, -0.125, 0.5, 0.125, 0.125, 0.5, -0.25, 0.25, 0.5, -0.25, 0.25, 0.5, -0.125, 0, 0.5, -0.25, -0.125, 0.5, -0.25, -0.25, 0.5, -0.25, -0.25, 0.5, -0.125, -0.25, 0.5, 0, -0.25, 0.5, 0.125, -0.25, 0.5, 0.25, -0.125, 0.5, 0.25, 0, 0.5, 0.25, 0.125, 0.5, 0.25, 0.25, 0.5, 0.125, 0.25, 0.5, 0.25, 0.25, 0.5, 0 )
+
+[sub_resource type="BoxShape" id=26]
+extents = Vector3( 0.540409, 0.468133, 0.298249 )
+
+[sub_resource type="CapsuleShape" id=27]
+radius = 0.448844
+height = 0.47814
+
+[node name="iso_64x64" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 4 )
+cell_size = Vector3( 1, 1, 1 )
+cell_center_y = false
+data = {
+"cells": PoolIntArray( 0, 0, 536870918, 1, 0, 536870918, 2, 0, 536870926, 3, 0, 536870923, 4, 0, 536870913, 5, 0, 536870913, 65529, 0, 536870913, 65530, 0, 536870913, 65531, 0, 536870913, 65532, 0, 536870913, 65533, 0, 536870913, 65534, 0, -1610612735, 65535, 0, 536870918, 0, 1, 536870913, 1, 1, 536870913, 2, 1, 536870913, 3, 1, 1, 4, 1, 536870913, 5, 1, 536870913, 65529, 1, 536870913, 65530, 1, 536870913, 65531, 1, 536870913, 65532, 1, 536870913, 65533, 1, 536870918, 65534, 1, 536870918, 65535, 1, 6, 0, 2, 536870913, 1, 2, 536870913, 2, 2, 536870913, 3, 2, 536870913, 4, 2, 1, 5, 2, 536870913, 65529, 2, 1, 65530, 2, 536870913, 65531, 2, 536870913, 65532, 2, 536870918, 65533, 2, 536870918, 65534, 2, 536870918, 65535, 2, 536870918, 0, 3, 536870927, 1, 3, 13, 2, 3, 13, 3, 3, 1, 4, 3, 1, 5, 3, 1, 65529, 3, 1, 65530, 3, 1, 65531, 3, 1, 65532, 3, 6, 65533, 3, 6, 65534, 3, 6, 65535, 3, 6, 0, 4, 6, 1, 4, 6, 2, 4, 6, 3, 4, 1, 4, 4, 1, 5, 4, 1, 65529, 4, 1, 65530, 4, 1, 65531, 4, 1, 65532, 4, 1, 65533, 4, 6, 65534, 4, 6, 65535, 4, 6, 0, 5, 6, 1, 5, 6, 2, 5, 6, 3, 5, 6, 4, 5, 1, 5, 5, 1, 65529, 5, 1, 65530, 5, 1, 65531, 5, 1, 65532, 5, 1, 65533, 5, 1, 65534, 5, 1, 65535, 5, 6, 0, 65530, 1, 1, 65530, 1, 2, 65530, 1, 3, 65530, 1, 4, 65530, 1, 5, 65530, 1, 65529, 65530, 1, 65530, 65530, 1, 65531, 65530, 1, 65532, 65530, 1, 65533, 65530, 1, 65534, 65530, 1, 65535, 65530, 1, 0, 65531, 1, 1, 65531, 1, 2, 65531, 1, 3, 65531, 1, 4, 65531, 1, 5, 65531, 1, 65529, 65531, 1, 65530, 65531, 1, 65531, 65531, 1, 65532, 65531, 1, 65533, 65531, 1, 65534, 65531, 1, 65535, 65531, 1, 196604, 65531, 6, 0, 65532, 1, 1, 65532, 1, 2, 65532, 1, 3, 65532, 1, 4, 65532, 1, 5, 65532, 1, 65529, 65532, 1, 65530, 65532, 1, 65531, 65532, 6, 65532, 65532, 6, 65533, 65532, 9, 65534, 65532, 1, 65535, 65532, 1, 196604, 65532, 6, 0, 65533, 7, 1, 65533, 1, 2, 65533, 1, 3, 65533, 1, 4, 65533, 1, 5, 65533, 1, 65529, 65533, 1, 65530, 65533, 1, 65531, 65533, 6, 65532, 65533, 6, 65533, 65533, 10, 65534, 65533, 8, 65535, 65533, 1, 196604, 65533, 6, 196605, 65533, 6, 0, 65534, 9, 1, 65534, 1, 2, 65534, 1, 3, 65534, 1, 4, 65534, 1, 5, 65534, 1, 65529, 65534, 1, 65530, 65534, 1, 65531, 65534, 6, 65532, 65534, 6, 65533, 65534, 6, 65534, 65534, 6, 65535, 65534, 6, 196604, 65534, 6, 196605, 65534, 6, 196606, 65534, 6, 0, 65535, 10, 1, 65535, 1, 2, 65535, 1, 3, 65535, 3, 4, 65535, 1, 5, 65535, 1, 65529, 65535, 1, 65530, 65535, 1, 65531, 65535, 1, 65532, 65535, 6, 65533, 65535, 6, 65534, 65535, 6, 65535, 65535, 6, 196605, 65535, 6, 196606, 65535, 6 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Camera" type="Spatial" parent="."]
+transform = Transform( 0.685921, 0.651558, 0.324014, 0, 0.445271, -0.895396, -0.727676, 0.61417, 0.305421, 10, 8.16497, -10 )
+
+[node name="Camera_Orientation" type="Camera" parent="Camera"]
+transform = Transform( 0.0295259, -0.499782, 0.865648, -0.895005, 0.372397, 0.245531, -0.445077, -0.782009, -0.436312, 0, 0, 0 )
+projection = 1
+size = 3.98
+near = 0.1
+script = ExtResource( 1 )
+
+[node name="player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48921, 0, -2.86186 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="player"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.216165, 0 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="player"]
+layers = 2147483650
+cast_shadow = 0
+offset = Vector2( 0, 16 )
+pixel_size = 0.022
+billboard = 1
+shaded = true
+frames = SubResource( 15 )
+animation = "idle"
+
+[node name="shadow" type="SpotLight" parent="player"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 1, 0 )
+light_energy = 0.81
+light_negative = true
+light_cull_mask = 2147483645
+spot_range = 3.0
+spot_attenuation = 0.0086685
+spot_angle = 10.0
+spot_angle_attenuation = 8779.98
+
+[node name="walk_particles" type="Particles" parent="player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.1 )
+layers = 2
+amount = 4
+lifetime = 1.78
+local_coords = false
+process_material = SubResource( 18 )
+draw_pass_1 = SubResource( 19 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.999972, -0.00359847, -0.00662562, 0.00753975, 0.477253, 0.878734, 0, -0.878759, 0.477266, 0, 4.52227, -1.55624 )
+light_energy = 0.2
+light_bake_mode = 0
+shadow_enabled = true
+
+[node name="box_sprite_01" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.47436, 0.222817, -5.35719 )
+mass = 16.4
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="shadow2" type="SpotLight" parent="box_sprite_01"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.205269, 1.65229, 0.234763 )
+light_energy = 0.81
+light_negative = true
+light_cull_mask = 2147483645
+spot_range = 3.9475
+spot_attenuation = 0.0086685
+spot_angle = 10.0
+spot_angle_attenuation = 8779.98
+
+[node name="CollisionShape" type="CollisionShape" parent="box_sprite_01"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.351225, 0 )
+shape = SubResource( 20 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="box_sprite_01"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.409747, 0 )
+pixel_size = 0.022
+billboard = 1
+frames = SubResource( 23 )
+
+[node name="box_mesh_01" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314836, 0.839357, 0.528877 )
+mass = 20.0
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance" type="MeshInstance" parent="box_mesh_01"]
+mesh = ExtResource( 6 )
+material/0 = SubResource( 24 )
+
+[node name="CollisionShape" type="CollisionShape" parent="box_mesh_01"]
+shape = SubResource( 25 )
+
+[node name="box_mesh_02" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314836, 1.3599, 0.528877 )
+mass = 20.0
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance" type="MeshInstance" parent="box_mesh_02"]
+mesh = ExtResource( 6 )
+material/0 = SubResource( 24 )
+
+[node name="CollisionShape" type="CollisionShape" parent="box_mesh_02"]
+shape = SubResource( 25 )
+
+[node name="box_mesh_03" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314836, 1.87224, 0.528877 )
+mass = 20.0
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance" type="MeshInstance" parent="box_mesh_03"]
+mesh = ExtResource( 6 )
+material/0 = SubResource( 24 )
+
+[node name="CollisionShape" type="CollisionShape" parent="box_mesh_03"]
+shape = SubResource( 25 )
+
+[node name="switch" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.99725 )
+script = ExtResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="switch"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0174161 )
+shape = SubResource( 26 )
+
+[node name="Sprite3D" type="Sprite3D" parent="switch"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203684, 0.275, 0.0244377 )
+pixel_size = 0.022
+billboard = 1
+texture = ExtResource( 7 )
+hframes = 2
+
+[node name="StaticBody" type="StaticBody" parent="switch"]
+transform = Transform( 0.873356, -0.487082, 0, 0.487082, 0.873356, 0, 0, 0, 1, -0.177138, 0, 0.0244377 )
+
+[node name="CollisionShape" type="CollisionShape" parent="switch/StaticBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0.0458639, 0.122287, 0 )
+shape = SubResource( 27 )
+[connection signal="body_entered" from="switch" to="switch" method="_on_switch_body_entered"]
+[connection signal="body_exited" from="switch" to="switch" method="_on_switch_body_exited"]
