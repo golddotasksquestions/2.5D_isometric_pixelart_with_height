@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="2.5D_isometric_pixelart_with_height"
 run/main_scene="res://iso_64x64.tscn"
+config/icon="res://icon_game.png"
 
 [audio]
 
